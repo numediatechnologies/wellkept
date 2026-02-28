@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap-index"
+    },
+    {
+      "source": "/sitemaps/:name",
+      "destination": "/api/sitemaps/:name"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/sitemap-index",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=1800, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}
