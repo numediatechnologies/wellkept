@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/api/ai/:action",
+      "destination": "/api/ai?action=:action"
+    },
+    {
+      "source": "/api/payments/payfast/:action",
+      "destination": "/api/payments?action=:action"
+    },
+    {
+      "source": "/api/admin/:resource/:id/:action",
+      "destination": "/api/admin?resource=:resource&id=:id&action=:action"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/api/sitemap-index"
     },

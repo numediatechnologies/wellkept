@@ -1,9 +1,9 @@
-import { brands, categories } from "./data";
+import { brands, categories } from "./data.js";
 import type {
   BuyerPostWizardDraft,
   MatchScoreBreakdown,
   SellerAlertRule,
-} from "../shared/types";
+} from "../shared/types.js";
 
 export function scoreBuyerPostMatch(
   draft: BuyerPostWizardDraft,

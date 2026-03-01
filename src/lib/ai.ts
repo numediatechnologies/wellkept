@@ -1,5 +1,5 @@
-import { brands, categories } from "./data";
-import { enforceBrandVoice } from "./brandVoice";
+import { brands, categories } from "./data.js";
+import { enforceBrandVoice } from "./brandVoice.js";
 import type {
   AIBuyerPostSuggestion,
   AICategorySuggestion,
@@ -7,7 +7,7 @@ import type {
   AIListingSuggestion,
   AIRetailPriceEstimate,
   AIConfidenceBand,
-} from "../shared/types";
+} from "../shared/types.js";
 
 function confidenceFromSignal(score: number): AIConfidenceBand {
   if (score >= 80) return "high";

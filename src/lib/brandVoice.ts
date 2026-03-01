@@ -2,7 +2,7 @@ import type {
   BrandVoicePolicy,
   GeneratedCopyContext,
   ModerationRewriteRequest,
-} from "../shared/types";
+} from "../shared/types.js";
 
 export const defaultBrandVoicePolicy: BrandVoicePolicy = {
   policyName: "Well-Kept Default",

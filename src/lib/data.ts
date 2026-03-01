@@ -6,7 +6,7 @@ import type {
   NotificationItem,
   RetailPriceReference,
   SellerAlertRule,
-} from "../shared/types";
+} from "../shared/types.js";
 
 export const categories: Category[] = [
   {
