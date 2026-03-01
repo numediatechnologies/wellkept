@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { detectItem } from "../_lib/domain";
-import { allowMethods, json } from "../_lib/http";
-import { suggestWithOpenAi } from "../_lib/openai";
+import { detectItem } from "../_lib/domain.js";
+import { allowMethods, json } from "../_lib/http.js";
+import { suggestWithOpenAi } from "../_lib/openai.js";
 
 const detectSchema = z.object({
   text: z.string().min(2),

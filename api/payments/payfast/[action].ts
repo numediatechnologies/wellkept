@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { allowMethods, json } from "../../_lib/http";
-import { buildPayfastInitiation, verifyPayfastWebhook } from "../../_lib/payfast";
-import { safeInsert } from "../../_lib/supabaseAdmin";
+import { allowMethods, json } from "../../_lib/http.js";
+import { buildPayfastInitiation, verifyPayfastWebhook } from "../../_lib/payfast.js";
+import { safeInsert } from "../../_lib/supabaseAdmin.js";
 
 const initiateSchema = z.object({
   reservationId: z.string().min(1),

@@ -1,7 +1,7 @@
-import { categories, brands } from "./domain";
-import { serverEnv } from "./env";
+import { categories, brands } from "./domain.js";
+import { serverEnv } from "./env.js";
 import type { AIBuyerPostSuggestion, AIListingSuggestion } from "../../src/shared/types";
-import { suggestBuyerPost, suggestListing } from "../../src/lib/ai";
+import { suggestBuyerPost, suggestListing } from "../../src/lib/ai.js";
 
 type SuggestionMode = "listing" | "buyer_post";
 

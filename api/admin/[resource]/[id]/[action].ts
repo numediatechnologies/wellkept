@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { enforceBrandVoice } from "../../../_lib/domain";
-import { allowMethods, json } from "../../../_lib/http";
+import { enforceBrandVoice } from "../../../_lib/domain.js";
+import { allowMethods, json } from "../../../_lib/http.js";
 
 const moderateSchema = z.object({
   title: z.string().min(3),

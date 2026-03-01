@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { allowMethods, json } from "../_lib/http";
-import { sendTransactionalEmail } from "../_lib/email";
+import { allowMethods, json } from "../_lib/http.js";
+import { sendTransactionalEmail } from "../_lib/email.js";
 
 const schema = z.object({
   to: z.string().email(),

@@ -1,7 +1,7 @@
 import { Resend } from "resend";
-import { enforceBrandVoice } from "./domain";
-import { serverEnv } from "./env";
-import { safeInsert } from "./supabaseAdmin";
+import { enforceBrandVoice } from "./domain.js";
+import { serverEnv } from "./env.js";
+import { safeInsert } from "./supabaseAdmin.js";
 
 export async function sendTransactionalEmail(input: {
   to: string;

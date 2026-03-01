@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { geographies } from "../_lib/domain";
-import { allowMethods, json } from "../_lib/http";
+import { geographies } from "../_lib/domain.js";
+import { allowMethods, json } from "../_lib/http.js";
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (!allowMethods(req, res, ["GET"])) return;

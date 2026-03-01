@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { scoreBuyerPostMatch, sellerAlertRules, totalMatchScore } from "../_lib/domain";
-import { allowMethods, json } from "../_lib/http";
+import { scoreBuyerPostMatch, sellerAlertRules, totalMatchScore } from "../_lib/domain.js";
+import { allowMethods, json } from "../_lib/http.js";
 
 const schema = z.object({
   draft: z.object({

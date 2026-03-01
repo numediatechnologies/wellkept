@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { serverEnv } from "./env";
+import { serverEnv } from "./env.js";
 
 type PayfastFields = Record<string, string>;
 

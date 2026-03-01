@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { categories, geographies, listings } from "../_lib/domain";
-import { allowMethods } from "../_lib/http";
+import { categories, geographies, listings } from "../_lib/domain.js";
+import { allowMethods } from "../_lib/http.js";
 
 function toSlug(value: string) {
   return value.toLowerCase().replace(/\s+/g, "-");
