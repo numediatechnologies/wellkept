@@ -1,7 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { detectItem, suggestBuyerPost, suggestListing } from "../_lib/domain";
+import { detectItem } from "../_lib/domain";
 import { allowMethods, json } from "../_lib/http";
+import { suggestWithOpenAi } from "../_lib/openai";
 
 const detectSchema = z.object({
   text: z.string().min(2),
@@ -12,7 +13,7 @@ const suggestSchema = z.object({
   cityOrTown: z.string().optional(),
 });
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!allowMethods(req, res, ["POST"])) return;
 
   const action = Array.isArray(req.query.action) ? req.query.action[0] : req.query.action;
@@ -32,7 +33,12 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
       return json(res, 400, { error: "Invalid body", issues: parsed.error.issues });
     }
 
-    return json(res, 200, suggestListing(parsed.data));
+    const suggestion = await suggestWithOpenAi({
+      mode: "listing",
+      ...parsed.data,
+    });
+
+    return json(res, 200, suggestion);
   }
 
   if (action === "suggest-buyer-post") {
@@ -41,7 +47,12 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
       return json(res, 400, { error: "Invalid body", issues: parsed.error.issues });
     }
 
-    return json(res, 200, suggestBuyerPost(parsed.data));
+    const suggestion = await suggestWithOpenAi({
+      mode: "buyer_post",
+      ...parsed.data,
+    });
+
+    return json(res, 200, suggestion);
   }
 
   return json(res, 404, { error: "Unknown AI action" });

@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { enforceBrandVoice } from "../_lib/domain";
 import { allowMethods, json } from "../_lib/http";
+import { sendTransactionalEmail } from "../_lib/email";
 
 const schema = z.object({
   to: z.string().email(),
@@ -16,20 +16,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return json(res, 400, { error: "Invalid body", issues: parsed.error.issues });
   }
 
-  const subject = enforceBrandVoice(parsed.data.subject, {
-    audience: "public",
-    format: "email",
-  });
-  const body = enforceBrandVoice(parsed.data.body, {
-    audience: "public",
-    format: "email",
-  });
-
-  return json(res, 200, {
-    queued: true,
-    provider: "resend",
+  const result = await sendTransactionalEmail(parsed.data);
+  return json(res, result.queued ? 200 : 502, {
     to: parsed.data.to,
-    subject,
-    body,
+    ...result,
   });
 }
